@@ -14,6 +14,8 @@
   "plugins": ["react"],
   "rules": {
     "no-unused-vars": "warn",
+    "react/prop-types": "warn",
+    "react/jsx-no-constructed-context-values": "warn",
     "react/react-in-jsx-scope": "off" ,
     "react/function-component-definition": [
       "error",
