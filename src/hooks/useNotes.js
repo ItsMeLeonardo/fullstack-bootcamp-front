@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect } from 'react'
 
 import { NoteContext } from '../context/NoteContext'
-import { getAll, create, update } from '../service/getNotes'
+import { getAll, create, update, getToken } from '../service/getNotes'
 
 const useNotes = () => {
   const { notes, setNotes } = useContext(NoteContext)
@@ -32,7 +32,7 @@ const useNotes = () => {
     [setNotes],
   )
 
-  return { notes, saveNote, updateNote }
+  return { notes, saveNote, updateNote, getToken }
 }
 
 export default useNotes

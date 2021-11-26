@@ -1,10 +1,11 @@
 import { useRef } from 'react'
+import PropTypes from 'prop-types'
 
 import useNotes from '../../hooks/useNotes'
 
-export default function AddNote() {
+export default function AddNote({ token }) {
   const formRef = useRef(null)
-  const { saveNote } = useNotes()
+  const { saveNote, getToken } = useNotes()
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -12,13 +13,11 @@ export default function AddNote() {
     const formData = new FormData(formRef.current)
     const note = {
       content: formData.get('note'),
-      // body: formData.get('note'),
-      // id: formData.get('note'),
       important: true,
     }
 
     formRef.current.firstChild.value = ''
-
+    getToken(token)
     saveNote(note)
   }
 
@@ -28,4 +27,8 @@ export default function AddNote() {
       <input type="submit" value="add note" />
     </form>
   )
+}
+
+AddNote.propTypes = {
+  token: PropTypes.string.isRequired,
 }

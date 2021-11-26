@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import useNotes from '../../hooks/useNotes'
 import NoteItem from './NoteItem'
 
-export default function Notes() {
+export default function Notes({ logout }) {
   const { notes } = useNotes()
   const [showAll, setShowAll] = useState(true)
 
@@ -15,6 +16,9 @@ export default function Notes() {
       <button type="button" onClick={handleShowImportant}>
         {showAll ? 'Show Important' : 'Show All'}
       </button>
+      <button type="button" onClick={logout}>
+        Logout
+      </button>
       <ul>
         {noteToShow?.map(({ id, content }) => (
           <NoteItem key={id} content={content} />
@@ -22,4 +26,8 @@ export default function Notes() {
       </ul>
     </>
   )
+}
+
+Notes.propTypes = {
+  logout: PropTypes.func.isRequired,
 }
