@@ -22,8 +22,12 @@ function App() {
     <div className="App">
       <Header />
       <NoteContextProvider>
-        {user ? <AddNote token={user.token} /> : <Login saveUser={setUser} />}
-        <Notes logout={handleLogout} />
+        {user ? (
+          <AddNote token={user.token} logout={handleLogout} />
+        ) : (
+          <Login saveUser={setUser} />
+        )}
+        <Notes />
       </NoteContextProvider>
     </div>
   )

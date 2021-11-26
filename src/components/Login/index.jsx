@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import loginService from '../../service/login'
 import Notification from '../Notification'
+import Togglable from '../Togglable'
 
 export default function Login({ saveUser }) {
   const [error, setError] = useState(false)
@@ -32,16 +33,18 @@ export default function Login({ saveUser }) {
   }
 
   return (
-    <form onSubmit={handleLogin} ref={formLoginRef}>
-      <label htmlFor="username">
-        <input id="username" name="username" type="text" placeholder="Username" />
-      </label>
-      <label htmlFor="password">
-        <input id="password" name="password" placeholder="password" type="password" />
-      </label>
-      {error && <Notification message={error.error} />}
-      <button type="submit">Login</button>
-    </form>
+    <Togglable buttonLabel="Login form">
+      <form onSubmit={handleLogin} ref={formLoginRef}>
+        <label htmlFor="username">
+          <input id="username" name="username" type="text" placeholder="Username" />
+        </label>
+        <label htmlFor="password">
+          <input id="password" name="password" placeholder="password" type="password" />
+        </label>
+        {error && <Notification message={error.error} />}
+        <button type="submit">Login</button>
+      </form>
+    </Togglable>
   )
 }
 
