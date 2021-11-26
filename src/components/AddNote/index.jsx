@@ -11,9 +11,10 @@ export default function AddNote() {
 
     const formData = new FormData(formRef.current)
     const note = {
-      // content: formData.get('note'),
-      body: formData.get('note'),
-      id: formData.get('note'),
+      content: formData.get('note'),
+      // body: formData.get('note'),
+      // id: formData.get('note'),
+      important: true,
     }
 
     formRef.current.firstChild.value = ''

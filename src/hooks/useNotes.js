@@ -1,25 +1,38 @@
 import { useCallback, useContext, useEffect } from 'react'
 
 import { NoteContext } from '../context/NoteContext'
-import getNotes from '../service/getNotes'
+import { getAll, create, update } from '../service/getNotes'
 
 const useNotes = () => {
   const { notes, setNotes } = useContext(NoteContext)
 
   useEffect(() => {
     if (!notes) {
-      getNotes().then(setNotes)
+      getAll().then(setNotes)
     }
   }, [])
 
   const saveNote = useCallback(
     (note) => {
-      setNotes((prevNotes) => [...prevNotes, note])
+      create(note).then((newNote) => {
+        setNotes((prevNotes) => [...prevNotes, newNote])
+      })
     },
     [setNotes],
   )
 
-  return { notes, saveNote }
+  const updateNote = useCallback(
+    ({ id, newNote }) => {
+      update(id, newNote).then((updatedNote) => {
+        setNotes((prevNotes) =>
+          prevNotes.map((note) => (note.id === id ? updatedNote : note)),
+        )
+      })
+    },
+    [setNotes],
+  )
+
+  return { notes, saveNote, updateNote }
 }
 
 export default useNotes
