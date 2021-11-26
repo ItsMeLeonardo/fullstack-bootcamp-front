@@ -33,7 +33,7 @@ export default function Login({ saveUser }) {
   }
 
   return (
-    <Togglable buttonLabel="Login form">
+    <Togglable buttonLabel="Show Login form">
       <form onSubmit={handleLogin} ref={formLoginRef}>
         <label htmlFor="username">
           <input id="username" name="username" type="text" placeholder="Username" />
