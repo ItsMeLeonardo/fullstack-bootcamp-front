@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -13,11 +14,15 @@
     "react-dom": "^17.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^12.1.2",
     "@vitejs/plugin-react": "^1.0.0",
+    "babel-jest": "^27.3.1",
     "eslint": "^8.3.0",
     "eslint-config-airbnb": "^19.0.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-node": "^11.1.0",
@@ -25,8 +30,13 @@
     "eslint-plugin-promise": "^5.1.1",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "jest": "^27.3.1",
     "prettier": "^2.5.0",
     "prop-types": "^15.7.2",
+    "react-test-renderer": "^17.0.2",
     "vite": "^2.6.4"
+  },
+  "jest":{ 
+    "testEnvironment": "jsdom"
   }
 }
