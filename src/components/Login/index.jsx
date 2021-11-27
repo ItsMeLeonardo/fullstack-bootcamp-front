@@ -42,7 +42,9 @@ export default function Login({ saveUser }) {
           <input id="password" name="password" placeholder="password" type="password" />
         </label>
         {error && <Notification message={error.error} />}
-        <button type="submit">Login</button>
+        <button type="submit" id="login-button">
+          Login
+        </button>
       </form>
     </Togglable>
   )
